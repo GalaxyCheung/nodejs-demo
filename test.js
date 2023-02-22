@@ -51,7 +51,7 @@ function start() {
   // 如果没有提供编码格式，文件操作以及很多网络操作就会将数据作为 Buffer 类型返回。
 
 
-  // const mime = 'image/png';
+  // const mime = 'image/png';  
   // const encoding = 'base64';
   // const base64Data = fs.readFileSync(`${__dirname}/assets/test.png`).toString(encoding);
   // const uri = `data:${mime};${encoding},${base64Data}`;
