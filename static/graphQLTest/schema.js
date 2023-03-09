@@ -25,6 +25,16 @@ const RocketType = new GraphQLObjectType({
     rocket_type: { type: GraphQLString }
   })
 });
+
+// 自定义test
+const UserType = new GraphQLObjectType({
+  name: "User",
+  fields: () => ({
+    user_id: { type: GraphQLInt },
+    user_name: { type: GraphQLString },
+  })
+});
+
 const RootQuery = new GraphQLObjectType({
   name: "RootQueryType",
   fields: {
@@ -38,9 +48,18 @@ const RootQuery = new GraphQLObjectType({
           .get(`https://api.spacexdata.com/v3/launches/${args.flight_number}`)
           .then(res => res.data);
       }
+    },
+    user: {
+      type: new GraphQLList(UserType),
+      resolve(parent, args) {
+        return axios
+          .get(`http://localhost:3009/user`)
+          .then(res => res.data.data);
+      }
     }
   }
 });
+
 module.exports = new GraphQLSchema({
-  query: RootQuery
+  query: RootQuery,
 });
