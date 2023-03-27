@@ -5,7 +5,7 @@ exports.createSQLConnection = () => {
     host: 'localhost',
     user: 'root',
     password: 'root',
-    database: 'aims_platform_portal'
+    database: 'lims_fp_test'
   };
   
   return mysql.createConnection(connCfg);

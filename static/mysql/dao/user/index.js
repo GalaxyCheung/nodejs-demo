@@ -10,9 +10,9 @@ exports.getUserData = async (req, callback) => {
   var dao = baseDao.createSQLConnection();
   dao.connect();
 
-  var sqlStr = "select * from sys_user where 1 = 1"
+  var sqlStr = "select * from t_core_user where 1 = 1"
   if(req.query.id) {
-    sqlStr += " and user_id = '" + req.query.id + "'";
+    sqlStr += " and ID = '" + req.query.id + "'";
   }
   await dao.query(sqlStr, (err, res) => {
     if (err) {
